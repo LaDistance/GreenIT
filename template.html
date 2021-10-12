@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Calculatrice d'empreinte carbone</title>
+  <meta name="description" content="à remplacer par la description du site">
+  <meta name="author" content="Noms de l'équipe">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  
+
+    <!-- Template pour une question : -->
+    <div id="commute-div" class="question-frame">
+
+        <h3>Comment vous rendez-vous au travail ?</h3>
+
+        <div>
+        <input type="radio" id="pied" name="commute" value="pied"
+                checked>
+        <label for="pied">à pied ou en vélo</label>
+        </div>
+
+        <div>
+        <input type="radio" id="commun" name="commute" value="commun">
+        <label for="commun">Dans les transports en commun</label>
+        </div>
+
+        <div>
+        <input type="radio" id="covoiturage" name="commute" value="covoiturage">
+        <label for="covoiturage">En covoiturage</label>
+        </div>
+
+        <div>
+        <input type="radio" id="voiture" name="commute" value="voiture">
+        <label for="voiture">En voiture, seul.</label>
+        </div>
+    
+        <!-- Résultat de cette question -->
+        <div>
+            <p> 
+                Votre consommation :
+            </p>
+            <h3 id="reponse-commute">
+                0,0g de CO²
+            </h3>
+        </div>
+    </div>
+    
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
