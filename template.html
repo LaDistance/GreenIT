@@ -26,26 +26,27 @@
         <h3>Comment vous rendez-vous au travail ?</h3>
 
         <div>
-        <input type="radio" id="pied" name="commute" value="pied"
-                checked>
-        <label for="pied">à pied ou en vélo</label>
-        </div>
+        <form id="form1">
+            <input type="radio" id="pied" name="commute" value="pied"
+                    checked>
+            <label for="pied">à pied ou en vélo</label>
+            </div>
 
-        <div>
-        <input type="radio" id="commun" name="commute" value="commun">
-        <label for="commun">Dans les transports en commun</label>
-        </div>
+            <div>
+            <input type="radio" id="commun" name="commute" value="commun">
+            <label for="commun">Dans les transports en commun</label>
+            </div>
 
-        <div>
-        <input type="radio" id="covoiturage" name="commute" value="covoiturage">
-        <label for="covoiturage">En covoiturage</label>
-        </div>
+            <div>
+            <input type="radio" id="covoiturage" name="commute" value="covoiturage">
+            <label for="covoiturage">En covoiturage</label>
+            </div>
 
-        <div>
-        <input type="radio" id="voiture" name="commute" value="voiture">
-        <label for="voiture">En voiture, seul.</label>
-        </div>
-    
+            <div>
+            <input type="radio" id="voiture" name="commute" value="voiture">
+            <label for="voiture">En voiture, seul.</label>
+            </div>
+        </form>
         <!-- Résultat de cette question -->
         <div>
             <p> 
@@ -57,6 +58,85 @@
         </div>
     </div>
     
+    <script>
+
+        let answers = {
+            "commute" : {
+                "answer" : "",
+                "co2Value" : 0,
+            },
+        };
+
+        function bindInput(inputName){
+            let radios = document.getElementsByName(inputName);
+            
+            for(let i = 0; i < radios.length; i++){
+                radios[i].onclick = function(){
+                    let co2value = calculate(inputName);
+                    // On pousse la réponse dans le JSON des réponses
+                    answers[inputName] = json(this.value, co2value);
+
+                    // On update la valeur du résultat de la question
+                    var labelReponse = "reponse-"+inputName;
+                    document.getElementById(labelReponse).innerText = co2value + "g de CO²";
+                    console.log("Votre nouveau total de C02 est : ", totalCo2());
+                }
+            }
+        }
+        
+        function calculate(questionName){
+            let value = 0;
+            let radios = document.getElementsByName(questionName);
+            let answer = document.querySelector('input[name="'+ questionName + '"]:checked').value;
+            switch(questionName){
+                case 'commute':
+                    // Formule à remplir... Calcul de la valeur en co² de la réponse
+                    // UN EXEMPLE DE CALCUL DE CO2 POUR UNE QUESTION : A REMPLIR POUR LES AUTRES (valeurs bidons)
+                    switch(answer){
+                        case 'pied':
+                            value = 0;
+                            break;
+                        case 'commun':
+                            value = 10;
+                            break;
+                        case 'covoiturage':
+                            value = 20;
+                            break;
+                        case 'voiture':
+                            value = 50;
+                            break;
+                    }
+                   
+                    break;
+
+                case '2equestion':
+                    // Formule à remplir... Calcul de la valeur en co² de la réponse
+                    value = 0;
+                    break;
+            }
+            return value;
+        }
+
+
+        function json(answer, value){
+            return {"answer" : answer, "value" : value};
+        }
+
+
+        function totalCo2(){
+            let total = 0;
+            for(var key of Object.keys(answers)){
+                total += calculate(key);
+            }
+            return total;
+        }
+
+        // Main code
+    
+        bindInput("commute");
+        
+    </script>
+
 
   <script src="js/scripts.js"></script>
 </body>
