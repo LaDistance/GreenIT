@@ -53,7 +53,3 @@ function loadAnswers(jsonString){
 
     }
 }
-
-function logAnswers(){
-    console.log("Answers : ", answers);
-}
