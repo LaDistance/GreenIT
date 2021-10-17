@@ -7,49 +7,43 @@
 <div id="outside">
   <form id="survey-form">
     <h1 id="title">Calcul de mon impact environnemental professionnel</h1>
-    
+
     <!-- ------------------Déplacements---------------------------- -->
     <fieldset>
       <legend>Déplacements</legend>
       <div>
-        <label id="form0">Combien avez vous de kilomètre entre votre domicile et votre travail ?<br></label>
-        <input type="number" placeholder="0km" name="commute" id="nbKm" min="0" step="1">  
+        <label id="form0">Combien avez vous de kilomètres entre votre domicile et votre travail ?<br></label>
+        <input type="number" placeholder="0km" name="commute" id="nbKm" min="0" step="1">
       </div>
       <div>
         <label id="form1">Comment vous rendez-vous au travail ? (Indiquez le pourcentage du trajet que vous faites avec
           le/les moyen(s) de locomotion séléctionné(s))</label>
         <p>
-            À pied ou en vélo 
-            <input type="number"
-            placeholder="%"  name="commute" id="pied" min="0" max="100" step="1"><br>
-          En bus <input type="number" placeholder="%"
-            name="commute" id="bus" min="0" max="100" step="1"><br>
-          En covoiturage 
-          <input type="number"
-            name="commute" id="covoiturage" min="0" max="100" step="1"><br>
-          En voiture, seul 
-          <input type="number"
-            name="commute" id="voiture" min="0" max="100" step="1"><br>
-          En métro 
-          <input type="number" placeholder="%"
-            name="commute" id="metro" min="0" max="100" step="1"><br>
-          En tramway 
-          <input type="number"
-            name="commute" id="tramway" min="0" max="100" step="1"><br>
-          En TER 
-          <input type="number" placeholder="%"
-            name="commute" id="ter" min="0" max="100" step="1"><br>
+          À pied ou en vélo
+          <input type="number" placeholder="%" name="commute" id="pied" min="0" max="100" step="1"><br>
+          En bus <input type="number" placeholder="%" name="commute" id="bus" min="0" max="100" step="1"><br>
+          En covoiturage
+          <input type="number" name="commute" id="covoiturage" min="0" max="100" step="1"><br>
+          En voiture, seul
+          <input type="number" name="commute" id="voiture" min="0" max="100" step="1"><br>
+          En métro
+          <input type="number" placeholder="%" name="commute" id="metro" min="0" max="100" step="1"><br>
+          En tramway
+          <input type="number" name="commute" id="tramway" min="0" max="100" step="1"><br>
+          En TER
+          <input type="number" placeholder="%" name="commute" id="ter" min="0" max="100" step="1"><br>
           En TGV
-          <input type="number" placeholder="%"
-            name="commute" id="tgv" min="0" max="100" step="1"><br>
+          <input type="number" placeholder="%" name="commute" id="tgv" min="0" max="100" step="1"><br>
         </p>
       </div>
       <div>
         <label id="form2">Combien de kilomètres parcourez vous en avion chaque année dans un cadre professionnel ?
           (Indiquez 0 dans chaque catégorie si vous ne prenez pas l'avion pour le travail)</label>
         <p>
-          <input type="number" name="avion" placeholder="km" id="kmpetitcourrier" min="0" step="1"> km en petits courriers<br>
-          <input type="number" name="avion" placeholder="km" id="kmmoyencourrier" min="0" step="1"> km en moyens courriers<br>
+          <input type="number" name="avion" placeholder="km" id="kmpetitcourrier" min="0" step="1"> km en petits
+          courriers<br>
+          <input type="number" name="avion" placeholder="km" id="kmmoyencourrier" min="0" step="1"> km en moyens
+          courriers<br>
           <input type="number" name="avion" placeholder="km" id="kmlongcourrier" min="0" step="1"> km en longs courriers
         </p>
       </div>
@@ -60,12 +54,14 @@
       <legend>Informatique</legend>
       <div>
         <label id="form3">Combien envoyez vous de mail en moyenne par jour ?<br></label>
-        <input type="number" name="mails" placeholder="Nombre de mails par jour" id="mails" min="0" step="1"> <label style="font-weight:400"> envoyés en
+        <input type="number" name="mails" placeholder="Nombre de mails par jour" id="mails" min="0" step="1"> <label
+          style="font-weight:400"> envoyés en
           moyenne par jour<br></label>
       </div>
       <div>
         <label id="form4">Quel est la taille de l'espace de stockage cloud que vous utilisez ?<br></label>
-        <input type="number" name="cloud" placeholder="Cloud" id="cloud" min="0" step="1"> <label style="font-weight:400"> Go de stockage cloud
+        <input type="number" name="cloud" placeholder="Cloud" id="cloud" min="0" step="1"> <label
+          style="font-weight:400"> Go de stockage cloud
           utilisé<br></label>
       </div>
     </fieldset>
@@ -78,14 +74,15 @@
         <label for="consommation">Votre consommation annuelle : </label><label id="totalCo2">0,0</label> g de CO²
       </div>
     </fieldset>
-    <div id="resetbutton">
+    <div id="buttons">
       <button id="reset" onclick="setAllToZero();">Recharger la page</button>
-    </div>
-    <div id="exportbutton">
       <button onclick="writeResultsToFile();">Exporter vos résultats</button>
+      <form method="POST" action="results.html">
+        <input type="button" value="Importer vos résultats" onclick="window.location = 'results.html'"/>
+      </form>
     </div>
 
-    
+
     <script src="js/scripts.js"></script>
 
   </form>

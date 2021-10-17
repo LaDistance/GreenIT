@@ -1,53 +1,75 @@
 <html>
-    <head> 
-    <script src="js/scripts2.js"></script>
-    </head>
-    <body onload="setup()">
-        <input id='fileid' type='file' name='filename' hidden/>
-        <input id='buttonid' type='button' value='Télécharger vos résultats' />
-        
-        <div name="commute">
-            <h1>Votre trajet pour aller au travail : </h1>
-            Le nombre de km : <span name="commute" id="answerKm"></span><br>
-            Pourcentages : <br>
-            à pied : <span name="commute" id="pied"></span> % <br>
-            Bus : <span name="commute" id="bus"></span> % <br>
-            Covoiturage : <span name="commute" id="covoiturage"></span> % <br>
-            Voiture : <span name="commute" id="voiture"></span> % <br>
-            Métro : <span name="commute" id="metro"></span> % <br>
-            Tramway : <span name="commute" id="tramway"></span> % <br>
-            TER : <span name="commute" id="TER"></span> % <br>
-            TGV : <span name="commute" id="TGV"></span> % <br>
-            <br>
-            Votre empreinte carbone liée au transport : <span name="commute" id="co2Value">0</span> g de CO² par an.
-        </div>
-        <div name="avion">
-            <h1>Vos trajets en avion en nombre de km, par an : </h1>
-            Petits courriers : <span name="avion" id="court"></span> km<br>
-            Moyens courriers : <span name="avion" id="moyen"></span> km<br>
-            Longs courriers : <span name="avion" id="long"></span> km<br>
-           
-            <br>
-            Votre empreinte carbone liée à l'avion : <span name="avion" id="co2Value">0</span> g de CO² par an.
-        </div>
-        <div name="mails">
-            <h1>Votre empreinte carbone liée aux mails : </h1>
-            Nombre de mails par jour : <span name="mails" id="answer"></span><br>
-            <br>
-            Votre empreinte carbone liée aux mails : <span name="mails" id="co2Value">0</span> g de CO² par an.
-        </div>
-        <div name="cloud">
-            <h1>Votre empreinte carbonée liée au cloud : </h1>
-            Le nombre de Go utilisés en cloud : <span name="cloud" id="answer"></span><br>
-            <br>
-            Votre empreinte carbone liée au transport : <span name="cloud" id="co2Value">0</span> g de CO² par an.
-        </div>
 
-        <div name="total">
-            <h1> Conclusion </h1>
-            <p> Au total, votre empreinte carbone est : </p> <span name="totalCo2"> 0 </span> g de CO² par an.
-            <br>
-        </div>
-    
-    </body> 
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/scripts2.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onload="setup()">
+    <div id="outside">
+        <form id="survey-form">
+            <div id="buttons">
+                <input id='fileid' type='file' name='filename' hidden />
+                <input id='buttonid' type='button' value='Télécharger vos résultats' />
+            </div>
+            <fieldset>
+                <legend>Déplacements</legend>
+                <div name="commute">
+                    <label>Votre trajet pour aller au travail : </label>
+                    <p>
+                        Le nombre de km : <span name="commute" id="answerKm"></span><br>
+                        Pourcentages : <br>
+                        à pied : <span name="commute" id="pied"></span> % <br>
+                        Bus : <span name="commute" id="bus"></span> % <br>
+                        Covoiturage : <span name="commute" id="covoiturage"></span> % <br>
+                        Voiture : <span name="commute" id="voiture"></span> % <br>
+                        Métro : <span name="commute" id="metro"></span> % <br>
+                        Tramway : <span name="commute" id="tramway"></span> % <br>
+                        TER : <span name="commute" id="TER"></span> % <br>
+                        TGV : <span name="commute" id="TGV"></span> % <br>
+                    </p>
+                    Votre empreinte carbone liée au transport : <span name="commute" id="co2Value">0</span> g de CO² par
+                    an.
+                </div>
+                <div name="avion">
+                    <label>Vos trajets en avion en nombre de km, par an : </label>
+                    <p>
+                        Petits courriers : <span name="avion" id="court"></span> km<br>
+                        Moyens courriers : <span name="avion" id="moyen"></span> km<br>
+                        Longs courriers : <span name="avion" id="long"></span> km<br>
+                    </p>
+                    Votre empreinte carbone liée à l'avion : <span name="avion" id="co2Value">0</span> g de CO² par an.
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Informatique</legend>
+                <div name="mails">
+                    <label>Votre empreinte carbone liée aux mails : </label>
+                    <p>
+                        Nombre de mails par jour : <span name="mails" id="answer"></span><br>
+                    </p>
+                    Votre empreinte carbone liée aux mails : <span name="mails" id="co2Value">0</span> g de CO² par an.
+                </div>
+                <div name="cloud">
+                    <label>Votre empreinte carbonée liée au cloud : </label>
+                    <p>
+                        Le nombre de Go utilisés en cloud : <span name="cloud" id="answer"></span><br>
+                    </p>
+                    Votre empreinte carbone liée au transport : <span name="cloud" id="co2Value">0</span> g de CO² par
+                    an.
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Résultat</legend>
+                <div name="total">
+                    <p> Au total, votre empreinte carbone est : </p> <span name="totalCo2"> 0 </span> g de CO² par an.
+                    <br>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+
 </html>
