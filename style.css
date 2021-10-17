@@ -2,9 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
-  font-size: 1.2em;
-  height: 100vh;
-  
+  font-size: 1.2em;  
 }
 
 #outside {
@@ -118,7 +116,7 @@ textarea {
 button{
   font-family: 'Ubuntu', sans-serif; 
   width: 170px;
-  height: 40px;
+  height: 50px;
   line-height: 1;
   font-size: 18px;
   font-weight: bold;
@@ -141,47 +139,4 @@ button span{
   opacity: 1;
   visibility: visible;
   transition: all .35s;
-}
-
-.success{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border-radius: 50%;
-  z-index: 1;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .35s;
-}
-
-.success svg{
-  width: 20px;
-  height: 20px;
-  fill: yellowgreen;
-  transform-origin: 50% 50%;
-  transform: translateY(-50%) rotate(0deg) scale(0);
-  transition: all .35s;
-}
-
-button.is_active{
-  width: 40px;
-  height: 40px;
-}
-
-button.is_active .success{
-  opacity: 1;
-  visibility: visible;
-}
-
-button.is_active .success svg{
-  margin-top: 50%;
-  transform: translateY(-50%) rotate(720deg) scale(1);
-}
-
-button.is_active span{
-  opacity: 0;
-  visibility: hidden;
 }
