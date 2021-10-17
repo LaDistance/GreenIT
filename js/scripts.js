@@ -98,6 +98,8 @@ function bindInput(inputName){
                     console.log("Answers : ",answers);
                 }
                 answers["totalCo2"] = totalCo2();
+                labelTotal = document.getElementById("totalCo2");
+                labelTotal.innerHTML = answers["totalCo2"].toLocaleString();
             }
         }
         

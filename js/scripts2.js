@@ -32,36 +32,24 @@ function loadAnswers(jsonString){
         let id = spans[i].getAttribute("id");
 
         if(name=="commute"){
-            console.log("Span element -- name : " + name + " || id : " + id);
             if(["pied", "bus", "covoiturage", "voiture", "metro", "tramway", "TER", "TGV"].includes(id)){
-                console.log("id in percents list");
-                spans[i].innerHTML = answers[name]["percents"][id];
-                console.log("Changed span with id : " + id + " to : ", answers[name]["percents"][id]);
+                spans[i].innerHTML = answers[name]["percents"][id].toLocaleString();
             }
             else{
-                spans[i].innerHTML = answers[name][id];
+                spans[i].innerHTML = answers[name][id].toLocaleString();
                 console.log("Changed span with id : " + id + " to : ", answers[name][id]);
             }
         }
         else if(name=="avion"){
             if(["court", "moyen", "long"].includes(id)){
-                console.log("id in categories list");
-                spans[i].innerHTML = answers[name]["answers"][id];
-                console.log("Changed span with id : " + id + " to : ", answers[name]["answers"][id]);
-            }
+                spans[i].innerHTML = answers[name]["answers"][id].toLocaleString();            }
             else{
-                spans[i].innerHTML = answers[name][id];
-                console.log("Changed span with id : " + id + " to : ", answers[name][id]);
-            }
+                spans[i].innerHTML = answers[name][id].toLocaleString();            }
         }
         else if(name=="totalCo2"){
-            spans[i].innerHTML = answers[name];
-            console.log("Changed span with name : " + name + " to : ", answers[name]);
-        }
+            spans[i].innerHTML = answers[name].toLocaleString();        }
         else{
-            spans[i].innerHTML = answers[name][id];
-            console.log("Changed span with id : " + id + " to : ", answers[name][id]);
-        }
+            spans[i].innerHTML = answers[name][id].toLocaleString();        }
 
     }
 }
