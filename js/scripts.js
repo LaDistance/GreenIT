@@ -175,8 +175,6 @@ function writeResultsToFile(){
     // my results object, #TODO : merge answers & conclusion for final results
     var file = new Blob([JSON.stringify(answers)], {type: "text/plain"});
     
-    console.log(content);
-    
     var hiddenLink = document.createElement('a');
     hiddenLink.style.display = 'none';
     hiddenLink.download = 'results.json';
