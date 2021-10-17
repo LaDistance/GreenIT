@@ -7,19 +7,22 @@ let answers = {
 };
 
 function bindInput(inputName){
-    let radios = document.getElementsByName(inputName);
+    let inputs = document.getElementsByName(inputName);
     
-    for(let i = 0; i < radios.length; i++){
-        radios[i].onclick = function(){
-            let co2value = calculate(inputName);
-            // On pousse la réponse dans le JSON des réponses
-            answers[inputName] = json(this.value, co2value);
-
-            // On update la valeur du résultat de la question
-            var labelReponse = "reponse-"+inputName;
-            document.getElementById(labelReponse).innerText = co2value + "g de CO²";
-            console.log("Votre nouveau total de C02 est : ", totalCo2());
+    for(let i = 0; i < inputs.length; i++){
+        if(inputs[0].type = "radio"){
+            inputs[i].onclick = function(){
+                let co2value = calculate(inputName);
+                // On pousse la réponse dans le JSON des réponses
+                answers[inputName] = json(this.value, co2value);
+    
+                // On update la valeur du résultat de la question
+                var labelReponse = "reponse-"+inputName;
+                document.getElementById(labelReponse).innerText = co2value + "g de CO²";
+                console.log("Votre nouveau total de C02 est : ", totalCo2());
+            }
         }
+        
     }
 }
 
@@ -31,22 +34,10 @@ function calculate(questionName){
         case 'commute':
             // Formule à remplir... Calcul de la valeur en co² de la réponse
             // UN EXEMPLE DE CALCUL DE CO2 POUR UNE QUESTION : A REMPLIR POUR LES AUTRES (valeurs bidons)
-            switch(answer){
-                case 'pied':
-                    value = 0;
-                    break;
-                case 'commun':
-                    value = 10;
-                    break;
-                case 'covoiturage':
-                    value = 20;
-                    break;
-                case 'voiture':
-                    value = 50;
-                    break;
-            }
-            break;
+            let nbKm = document.getElementById("nbKm").value;
 
+            
+            break;
         case '2equestion':
             // Formule à remplir... Calcul de la valeur en co² de la réponse
             value = 0;
