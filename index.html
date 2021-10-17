@@ -1,0 +1,98 @@
+<head>
+  <meta charset="utf-8">
+  <title>Calculatrice</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<div id="outside">
+  <form id="survey-form">
+    <h1 id="title">Calcul de mon impact environnemental professionnel</h1>
+    <p id="description"><b>Note : </b>À compléter</p>
+
+    <!-- ------------------Déplacements---------------------------- -->
+    <fieldset>
+      <legend>Déplacements</legend>
+      <div>
+        <label id="form0">Combien avez vous de kilomètre entre votre domicile et votre travail ?<br></label>
+        <input type="text" placeholder="0km" id="nbKm">  
+      </div>
+      <div>
+        <label id="form1">Comment vous rendez-vous au travail ? (Indiquez le pourcentage du trajet que vous faites avec
+          le/les moyen(s) de locomotion séléctionné(s))</label>
+        <p>
+          <input type="checkbox" id="pied" name="commute" value="pied"> À pied ou en vélo <input type="text"
+            placeholder="%" id="%pied"><br>
+          <input type="checkbox" id="bus" name="commute" value="bus"> En bus <input type="text" placeholder="%"
+            id="%pied"><br>
+          <input type="checkbox" id="covoiturage" name="commute" value="covoiturage"> En covoiturage <input type="text"
+            placeholder="%" id="%pied"><br>
+          <input type="checkbox" id="voiture" name="commute" value="voiture"> En voiture, seul <input type="text"
+            placeholder="%" id="%pied"><br>
+          <input type="checkbox" id="metro" name="commute" value="metro"> En métro <input type="text" placeholder="%"
+            id="%pied"><br>
+          <input type="checkbox" id="tramway" name="commute" value="tramway"> En tramway <input type="text"
+            placeholder="%" id="%pied"><br>
+          <input type="checkbox" id="TER" name="commute" value="TER"> En TER <input type="text" placeholder="%"
+            id="%pied"><br>
+        </p>
+      </div>
+      <div>
+        <label id="form2">Combien de kilomètres parcourez vous en avion chaque année dans un cadre professionnel ?
+          (Indiquez 0 dans chaque catégorie si vous ne prenez pas l'avion pour le travail)</label>
+        <p>
+          <input type="text" placeholder="km" id="kmpetitcourrier"> km en petits courriers<br>
+          <input type="text" placeholder="km" id="kmmoyencourrier"> km en moyens courriers<br>
+          <input type="text" placeholder="km" id="kmlongcourrier"> km en longs courriers
+        </p>
+      </div>
+
+    </fieldset>
+    <!-- ------------------Informatique-------------------------------- -->
+    <fieldset>
+      <legend>Informatique</legend>
+      <div>
+        <label id="form3">Combien envoyez vous de mail en moyenne par jour ?<br></label>
+        <input type="text" placeholder="nombre de mails" id="nbmails"> <label style="font-weight:400"> envoyés en
+          moyenne par jour<br></label>
+      </div>
+      <div>
+        <label id="form4">Quel est la taille de l'espace de stockage cloud que vous utilisez ?<br></label>
+        <input type="text" placeholder="Go" id="cloud"> <label style="font-weight:400"> Go de stockage cloud
+          utilisé<br></label>
+      </div>
+    </fieldset>
+
+    <!-- -----------------Résultat--------------------------------- -->
+
+    <fieldset>
+      <legend>Résultat</legend>
+      <div>
+        <label for="consommation">Votre consommation annuelle : </label><label id="reponse">0,0g de CO²</label>
+      </div>
+    </fieldset>
+
+    <div id="exportbutton">
+      <button onclick="writeResultsToFile();" class="">
+        <span>Exporter</span>
+        <div class="success">
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
+          
+      <path d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173   c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752   c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z"/>
+     </svg>
+          </div>
+      </button>
+    </div>
+
+    
+    <script>
+      let btn = document.querySelector("button");
+
+      btn.addEventListener("click", active);
+
+      function active() {
+        btn.classList.toggle("is_active");
+      }
+    </script>
+
+  </form>
+</div>
