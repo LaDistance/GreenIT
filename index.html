@@ -12,24 +12,25 @@
     <fieldset>
       <legend>Déplacements</legend>
       <div>
-        <label id="form0">Combien avez vous de kilomètres entre votre domicile et votre travail ?<br></label>
+        <label id="form0">Combien avez vous de kilomètres entre votre domicile et votre travail ?<br></label><br>
         <input type="number" placeholder="0km" name="commute" id="nbKm" min="0" step="1">
       </div>
       <div>
         <label id="form1">Comment vous rendez-vous au travail ? (Indiquez le pourcentage du trajet que vous faites avec
-          le/les moyen(s) de locomotion séléctionné(s))</label>
+          le(s) moyen(s) de locomotion séléctionné(s))</label>
         <p>
           À pied ou en vélo
           <input type="number" placeholder="%" name="commute" id="pied" min="0" max="100" step="1"><br>
-          En bus <input type="number" placeholder="%" name="commute" id="bus" min="0" max="100" step="1"><br>
+          En bus 
+          <input type="number" placeholder="%" name="commute" id="bus" min="0" max="100" step="1"><br>
           En covoiturage
-          <input type="number" name="commute" id="covoiturage" min="0" max="100" step="1"><br>
+          <input type="number" placeholder="%" name="commute" id="covoiturage" min="0" max="100" step="1"><br>
           En voiture, seul
-          <input type="number" name="commute" id="voiture" min="0" max="100" step="1"><br>
+          <input type="number" placeholder="%" name="commute" id="voiture" min="0" max="100" step="1"><br>
           En métro
           <input type="number" placeholder="%" name="commute" id="metro" min="0" max="100" step="1"><br>
           En tramway
-          <input type="number" name="commute" id="tramway" min="0" max="100" step="1"><br>
+          <input type="number" placeholder="%" name="commute" id="tramway" min="0" max="100" step="1"><br>
           En TER
           <input type="number" placeholder="%" name="commute" id="ter" min="0" max="100" step="1"><br>
           En TGV
@@ -37,7 +38,7 @@
         </p>
       </div>
       <div>
-        <label id="form2">Combien de kilomètres parcourez vous en avion chaque année dans un cadre professionnel ?
+        <label id="form2">Combien de kilomètres parcourez-vous en avion chaque année dans un cadre professionnel ?
           (Indiquez 0 dans chaque catégorie si vous ne prenez pas l'avion pour le travail)</label>
         <p>
           <input type="number" name="avion" placeholder="km" id="kmpetitcourrier" min="0" step="1"> km en petits
@@ -53,16 +54,108 @@
     <fieldset>
       <legend>Informatique</legend>
       <div>
-        <label id="form3">Combien envoyez vous de mail en moyenne par jour ?<br></label>
+        <label id="form3">Combien envoyez-vous de mails en moyenne par jour ?<br></label><br>
         <input type="number" name="mails" placeholder="Nombre de mails par jour" id="mails" min="0" step="1"> <label
-          style="font-weight:400"> envoyés en
+          style="font-weight:400"> mails envoyé(s) en
           moyenne par jour<br></label>
       </div>
       <div>
-        <label id="form4">Quel est la taille de l'espace de stockage cloud que vous utilisez ?<br></label>
+        <label id="form4">Quel est la taille de l'espace de stockage cloud que vous utilisez ?<br></label><br>
         <input type="number" name="cloud" placeholder="Cloud" id="cloud" min="0" step="1"> <label
           style="font-weight:400"> Go de stockage cloud
-          utilisé<br></label>
+          utilisé(s)<br></label>
+      </div>
+      <div>
+        <label id="form5">Quel est votre équipement informatique ?<br></label>
+        <p>
+          Avez-vous un ordinateur portable : 
+          <select name="select-laptop" id="laptop" onchange="changeHiddenInput()">
+            <option value="aucun">Aucun</option>
+            <option value="notebook">Notebook</option>
+            <option value="ultrabook">Ultrabook</option>
+            <option value="laptop-gamer">Laptop de gamer</option>
+          </select>
+          <input type="hidden" name="laptop" id="hiddenInput"/>
+          Durée d'utilisation : 
+          <select name="select-duree-utilisation-laptop" id="duree-utilisation-laptop" onchange="changeHiddenInput()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select> an(s)<br>
+          <input type="hidden" name="laptop" id="hiddenInput"/>
+          Avez-vous un ordinateur fixe : 
+          <select name="pc" id="pc" onchange="changeHiddenInput()">
+            <option value="aucun">Aucun</option>
+            <option value="bureautique">Bureautique</option>
+            <option value="pc-gamer">PC de gamer</option>
+          </select>
+          <input type="hidden" name="pc" id="hiddenInput"/>
+          Durée d'utilisation : 
+          <select name="select-duree-utilisation-pc" id="duree-utilisation-pc" onchange="changeHiddenInput()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select> an(s)<br>
+          <input type="hidden" name="pc" id="hiddenInput"/>
+          Avez-vous un smartphone ? 
+          <select name="select-smartphone" id="smartphone" onchange="changeHiddenInput()">
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+          </select>
+          <input type="hidden" name="smartphone" id="hiddenInput"/>
+          Durée d'utilisation :
+          <select name="select-duree-utilisation-smartphone" id="duree-utilisation-smartphone" onchange="changeHiddenInput()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select> an(s)<br>
+          <input type="hidden" name="smartphone" id="hiddenInput"/>
+          Avez-vous une tablette ? 
+          <select name="select-tablette" id="tablette" onchange="changeHiddenInput()">
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+          </select>
+          <input type="hidden" name="tablette" id="hiddenInput"/>
+          Durée d'utilisation :
+          <select name="select-duree-utilisation-tablette" id="duree-utilisation-tablette" onchange="changeHiddenInput()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select> an(s)<br>
+          <input type="hidden" name="tablette" id="hiddenInput"/>
+        </p>
       </div>
     </fieldset>
 
@@ -71,7 +164,7 @@
     <fieldset>
       <legend>Résultat</legend>
       <div>
-        <label for="consommation">Votre consommation annuelle : </label><label id="totalCo2">0,0</label> g de CO²
+        <label for="consommation">Votre consommation annuelle : </label><label id="totalCo2">0</label> kg de CO²
       </div>
     </fieldset>
     <div id="buttons">
