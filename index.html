@@ -69,15 +69,15 @@
         <label id="form5">Quel est votre équipement informatique ?<br></label>
         <p>
           Avez-vous un ordinateur portable : 
-          <select name="select-laptop" id="laptop" onchange="changeHiddenInput()">
+          <select name="select-laptop" id="laptop" onchange="changeHiddenInput('hiLaptop', 'laptop')">
             <option value="aucun">Aucun</option>
             <option value="notebook">Notebook</option>
             <option value="ultrabook">Ultrabook</option>
             <option value="laptop-gamer">Laptop de gamer</option>
           </select>
-          <input type="hidden" name="laptop" id="hiddenInput"/>
+          <input type="hidden" name="laptop" id="hiLaptop"/>
           Durée d'utilisation : 
-          <select name="select-duree-utilisation-laptop" id="duree-utilisation-laptop" onchange="changeHiddenInput()">
+          <select name="select-duree-utilisation-laptop" id="duree-utilisation-laptop" onchange="changeHiddenInput('hiLaptopUse', 'duree-utilisation-laptop')">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -90,16 +90,16 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select> an(s)<br>
-          <input type="hidden" name="laptop" id="hiddenInput"/>
+          <input type="hidden" name="laptop" id="hiLaptopUse"/>
           Avez-vous un ordinateur fixe : 
-          <select name="pc" id="pc" onchange="changeHiddenInput()">
+          <select name="select-pc" id="pc" onchange="changeHiddenInput('hiPc', 'pc')">
             <option value="aucun">Aucun</option>
             <option value="bureautique">Bureautique</option>
             <option value="pc-gamer">PC de gamer</option>
           </select>
-          <input type="hidden" name="pc" id="hiddenInput"/>
+          <input type="hidden" name="pc" id="hiPc"/>
           Durée d'utilisation : 
-          <select name="select-duree-utilisation-pc" id="duree-utilisation-pc" onchange="changeHiddenInput()">
+          <select name="select-duree-utilisation-pc" id="duree-utilisation-pc" onchange="changeHiddenInput('hiPcUse','duree-utilisation-pc')">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -112,15 +112,15 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select> an(s)<br>
-          <input type="hidden" name="pc" id="hiddenInput"/>
+          <input type="hidden" name="pc" id="hiPcUse"/>
           Avez-vous un smartphone ? 
-          <select name="select-smartphone" id="smartphone" onchange="changeHiddenInput()">
+          <select name="select-smartphone" id="smartphone" onchange="changeHiddenInput('hiSmartphone', 'smartphone')">
             <option value="non">Non</option>
             <option value="oui">Oui</option>
           </select>
-          <input type="hidden" name="smartphone" id="hiddenInput"/>
+          <input type="hidden" name="smartphone" id="hiSmartphone"/>
           Durée d'utilisation :
-          <select name="select-duree-utilisation-smartphone" id="duree-utilisation-smartphone" onchange="changeHiddenInput()">
+          <select name="select-duree-utilisation-smartphone" id="duree-utilisation-smartphone" onchange="changeHiddenInput('hiSmartphoneUse', 'duree-utilisation-smartphone')">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -133,15 +133,15 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select> an(s)<br>
-          <input type="hidden" name="smartphone" id="hiddenInput"/>
+          <input type="hidden" name="smartphone" id="hiSmartphoneUse"/>
           Avez-vous une tablette ? 
-          <select name="select-tablette" id="tablette" onchange="changeHiddenInput()">
+          <select name="select-tablette" id="tablette" onchange="changeHiddenInput('hiTablette', 'tablette')">
             <option value="non">Non</option>
             <option value="oui">Oui</option>
           </select>
-          <input type="hidden" name="tablette" id="hiddenInput"/>
+          <input type="hidden" name="tablette" id="hiTablette"/>
           Durée d'utilisation :
-          <select name="select-duree-utilisation-tablette" id="duree-utilisation-tablette" onchange="changeHiddenInput()">
+          <select name="select-duree-utilisation-tablette" id="duree-utilisation-tablette" onchange="changeHiddenInput('hiTabletteUse', 'duree-utilisation-tablette')">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -154,7 +154,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select> an(s)<br>
-          <input type="hidden" name="tablette" id="hiddenInput"/>
+          <input type="hidden" name="tablette" id="hiTabletteUse"/>
         </p>
       </div>
     </fieldset>
@@ -168,11 +168,9 @@
       </div>
     </fieldset>
     <div id="buttons">
-      <button id="reset" onclick="setAllToZero();">Recharger la page</button>
-      <button onclick="writeResultsToFile();">Exporter vos résultats</button>
-      <form method="POST" action="results.html">
-        <input type="button" value="Importer vos résultats" onclick="window.location = 'results.html'"/>
-      </form>
+      <button type="button" id="reset" onclick="setAllToZero();">Recharger la page</button>
+      <button type="button" onclick="writeResultsToFile();">Exporter vos résultats</button>
+      <button type="button" onclick="window.location = 'results.html'"/>Importer vos résultats</button>
     </div>
 
 
