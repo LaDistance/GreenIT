@@ -93,20 +93,35 @@ function parseIntOrZero(e) {
     return Number.isNaN(t) && (t = 0), t;
 }
 
-function changeHiddenInput() {
-    const g = document.getElementsByTagName('select');
-    const h = document.getElementById('hiddenInput');
-    for (let i =0; i< g.length;i++) {
-        (function (index) {
-            h.setAttribute("value", g[i].value);
-            console.log(h.getAttribute("value"));
-        })(i);
+function changeHiddenInput(hiddenInputId, selectId) {
+    const g = document.getElementById(selectId);
+    const h = document.getElementById(hiddenInputId);
+    h.value = g.value;
+    console.log("Changed hidden input : " + hiddenInputId + " to value : " + g.value); 
+    console.log("Hidden input name : ", h.name);
+    var elements = document.getElementsByName(h.name);
+    switch(h.name){
+        case 'laptop':
+            console.log(elements);
+            answers["laptop"] = { answers: { choixLaptop: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: calculate("laptop") }
+        case 'pc': 
+            console.log(elements);
+            answers["pc"] = { answers: { choixPc: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: calculate("pc") }
+        case 'smartphone':
+            console.log(elements);
+            answers["smartphone"] = { answers: { choixSmartphone: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: calculate("smartphone") }
+        case 'tablette':
+            console.log(elements);
+            answers["tablette"] = { answers: { choixTablette: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: calculate("tablette") }
     }
+    answers["totalCo2"] = totalCo2();
+    (labelTotal = document.getElementById("totalCo2")),
+    (labelTotal.innerHTML = (Math.round((answers.totalCo2) / 1000)).toLocaleString());
 }
 
 function calculate(e) {
     let t = 0;
-    document.getElementsByName(e);
+    console.log("Calculating for : ", document.getElementsByName(e));
     switch (((elements = document.getElementsByName(e)), e)) {
         case "commute":
             let n = parseIntOrZero(elements[0].value);
@@ -133,44 +148,55 @@ function calculate(e) {
         case "cloud":
             t = 2e3 * parseIntOrZero(elements[0].value);
         case "laptop":
-            if (elements[0].value == "Aucun") {
+            if (elements[0].value == "aucun") {
                 t = 0;
-            } else {
-                for (let i = 1, len = e.length; i < len; i++) {
-                    if (elements[0].value == laptop.nom[i]) {
-                        t = parseIntOrZero(laptop.production[i]) + parseIntOrZero(laptop.utilisation[i]) * parseIntOrZero(elements[1].value);
-                        break;
-                    }
-                }
+                break;
+            } 
+            else if(elements[0].value == "notebook"){
+                t = 282000 + 2400 * parseIntOrZero(elements[1].value);
+                break;
+            }
+            else if(elements[0].value == "ultrabook"){
+                t = 264000 + 4400 * parseIntOrZero(elements[1].value);
+                break;
+            }
+            else if(elements[0].value == "laptop-gamer"){
+                t = 333000 + 5000 * parseIntOrZero(elements[1].value);
+                break;
             }
         case "pc":
-            if (elements[0].value == "Aucun") {
+            if (elements[0].value == "aucun") {
                 t = 0;
-            } else {
-                for (let i = 1, len = e.length; i < len; i++) {
-                    if (elements[0].value == laptop.nom[i]) {
-                        t = parseIntOrZero(laptop.production[i]) + parseIntOrZero(laptop.utilisation[i]) * parseIntOrZero(elements[1].value);
-                        break;
-                    }
-                }
+                break;
+            } 
+            else if(elements[0].value == "bureautique"){
+                t = 300000 + 10000 * parseIntOrZero(elements[1].value);
+                break;
+            }
+            else if(elements[0].value == "pc-gamer"){
+                t = 411000 + 15500 * parseIntOrZero(elements[1].value);
+                break;
             }
         case "smartphone":
-            if (elements[0].value == "Non") {
+            if (elements[0].value == "non") {
                 t = 0;
-            } else {
-                t = parseIntOrZero(laptop.production[1]) + parseIntOrZero(laptop.utilisation[1]) * parseIntOrZero(elements[1].value);
+                break;
+            } 
+            else if(elements[0].value == "oui"){
+                t = 43680 + 500 * parseIntOrZero(elements[1].value);
                 break;
             }
-
         case "tablette":
-            if (elements[0].value == "Non") {
+            if (elements[0].value == "non") {
                 t = 0;
-            } else {
-                t = parseIntOrZero(laptop.production[1]) + parseIntOrZero(laptop.utilisation[1]) * parseIntOrZero(elements[1].value);
+                break;
+            } 
+            else if(elements[0].value == "oui"){
+                t = 83000 + 1000 * parseIntOrZero(elements[1].value);
                 break;
             }
-
     }
+    console.log("Returning : ", t);
     return t;
 }
 function json(e, t) {
@@ -188,8 +214,9 @@ function getAllUniqueInputNames() {
     return [...new Set(e)];
 }
 function writeResultsToFile() {
+    console.log(answers);
     var e = new Blob([JSON.stringify(answers)], { type: "text/plain" }),
-        t = document.createElement("a");
+       t = document.createElement("a");
     (t.style.display = "none"), (t.download = "results.json"), (t.href = URL.createObjectURL(e)), t.click();
 }
 function bindInputs(e) {
