@@ -28,21 +28,21 @@ function loadAnswers(e) {
                     ? (t[e].innerHTML = answers[n].answers[o].toLocaleString())
                     : (t[e].innerHTML = answers[n][o].toLocaleString())
                 : "laptop" == n
-                    ? ["choixLaptop", "dureeLaptop"].includes(o)
+                    ? ["choixLaptop", "duree"].includes(o)
                         ? (t[e].innerHTML = answers[n].answers[o].toLocaleString())
                         : (t[e].innerHTML = answers[n][o].toLocaleString())
                     : "pc" == n
-                        ? ["choixPc", "dureePc"].includes(o)
+                        ? ["choixPc", "duree"].includes(o)
                             ? (t[e].innerHTML = answers[n].answers[o].toLocaleString())
                             : (t[e].innerHTML = answers[n][o].toLocaleString())
                         : "smartphone" == n
-                            ? ["choixSmartphone", "dureeSmartphone"].includes(o)
+                            ? ["choixSmartphone", "duree"].includes(o)
                                 ? (t[e].innerHTML = answers[n].answers[o].toLocaleString())
                                 : (t[e].innerHTML = answers[n][o].toLocaleString())
                             : "tablette" == n
-                                ? ["choixTablette", "dureeTablette"].includes(o)
+                                ? ["choixTablette", "duree"].includes(o)
                                     ? (t[e].innerHTML = answers[n].answers[o].toLocaleString())
                                     : (t[e].innerHTML = answers[n][o].toLocaleString())
-                                : (t[e].innerHTML = "totalCo2" == n ? answers[n].toLocaleString() : answers[n][o].toLocaleString());
+                                : (t[e].innerHTML = "totalCo2" == n ? Math.round((answers[n])/1000).toLocaleString() : answers[n][o].toLocaleString());
     }
 }
