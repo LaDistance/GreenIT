@@ -2,10 +2,10 @@ let answers = {
     commute: { answerKm: 0, percents: { pied: 0, bus: 0, covoiturage: 0, voiture: 0, metro: 0, tramway: 0, TER: 0, TGV: 0 }, co2Value: 0 },
     avion: { answers: { court: 0, moyen: 0, long: 0 }, co2Value: 0 },
     mails: { answer: 0, co2Value: 0 },
-    laptop: { answers: { choixLaptop: "Aucun", duree: 0 }, co2Value: 0 },
-    pc: { answers: { choixPc: "Aucun", duree: 0 }, co2Value: 0 },
-    smartphone: { answers: { choixSmartphone: "Non", duree: 0 }, co2Value: 0 },
-    tablette: { answers: { choixTablette: "Non", duree: 0 }, co2Value: 0 },
+    laptop: { answers: { choixLaptop: "Aucun", dureeLaptop: 0 }, co2Value: 0 },
+    pc: { answers: { choixPc: "Aucun", dureePc: 0 }, co2Value: 0 },
+    smartphone: { answers: { choixSmartphone: "Non", dureeSmartphone: 0 }, co2Value: 0 },
+    tablette: { answers: { choixTablette: "Non", dureeTablette: 0 }, co2Value: 0 },
     cloud: { answer: 0, co2Value: 0 },
     totalCo2: 0,
 };
@@ -64,22 +64,22 @@ function bindInput(e) {
                             console.log("Answers :", answers))
                         : "laptop" == e
                             ? ((elements = document.getElementsByName("laptop")),
-                                (answers[e] = { answers: { choixLaptop: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: t }),
+                                (answers[e] = { answers: { choixLaptop: (elements[0].value), dureeLaptop: parseIntOrZero(elements[1].value) }, co2Value: t }),
                                 console.log("La consommation annuelle pour le laptop est : ", t),
                                 console.log("Answers :", answers))
                             : "pc" == e
                                 ? ((elements = document.getElementsByName("pc")),
-                                    (answers[e] = { answers: { choixPc: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: t }),
+                                    (answers[e] = { answers: { choixPc: (elements[0].value), dureePc: parseIntOrZero(elements[1].value) }, co2Value: t }),
                                     console.log("La consommation annuelle pour le PC est : ", t),
                                     console.log("Answers :", answers))
                                 : "smartphone" == e
                                     ? ((elements = document.getElementsByName("smartphone")),
-                                        (answers[e] = { answers: { choixSmartphone: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: t }),
+                                        (answers[e] = { answers: { choixSmartphone: (elements[0].value), dureeSmartphone: parseIntOrZero(elements[1].value) }, co2Value: t }),
                                         console.log("La consommation annuelle pour le smartphone est : ", t),
                                         console.log("Answers :", answers))
                                     : "tablette" == e
                                         ? ((elements = document.getElementsByName("tablette")),
-                                            (answers[e] = { answers: { choixTablette: (elements[0].value), duree: parseIntOrZero(elements[1].value) }, co2Value: t }),
+                                            (answers[e] = { answers: { choixTablette: (elements[0].value), dureeTablette: parseIntOrZero(elements[1].value) }, co2Value: t }),
                                             console.log("La consommation annuelle pour la tablette est : ", t),
                                             console.log("Answers :", answers))
                                         : ((elements = document.getElementsByName(e)), (answers[e] = json(this.value, t)), console.log("Consommation pour " + e + " : ", t), console.log("Answers : ", answers)),
