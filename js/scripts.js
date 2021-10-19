@@ -24,7 +24,9 @@ var laptop = [{ key: "aucun", nom: "Aucun", production: "0", utilisation: "0" },
 
 function setAllToZero() {
     let e = document.getElementsByTagName("input");
+    let f = document.getElementsByTagName("select");
     for (i = 0; i < e.length; i++) e[i].value = 0;
+    for (i = 0; i < f.length; i++) f[i].selectedIndex = 0;
 }
 function bindInput(e) {
     let t = document.getElementsByName(e);
